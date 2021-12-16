@@ -1,1 +1,236 @@
 
+define :tss do
+  sleep 0.5
+  sample :drum_cymbal_closed
+  sleep 0.375
+  sample :drum_cymbal_closed
+  sleep 0.625
+  sample :drum_cymbal_closed
+  sleep 0.5
+end
+
+define :boo_bop do
+  loop do
+    sample :drum_bass_soft
+    sleep 0.75
+    sample :drum_bass_soft
+    sleep 0.5
+    sample :drum_bass_soft
+    sleep 0.25
+    sample :drum_bass_soft
+    sleep 0.5
+  end
+end
+
+define :do_da do
+  use_synth :subpulse
+  2.times do
+    play_chord [52, 64]
+    sleep 0.25
+    play 59
+    sleep 0.25
+    play_chord [55, 64]
+    sleep 0.25
+    play 59
+    sleep 0.25
+  end
+  2.times do
+    play_chord [50, 62]
+    sleep 0.25
+    play 59
+    sleep 0.25
+    play_chord [55, 62]
+    sleep 0.25
+    play 59
+    sleep 0.25
+  end
+  2.times do
+    play_chord [50, 62]
+    sleep 0.25
+    play 59
+    sleep 0.25
+    play_chord [54, 62]
+    sleep 0.25
+    play 59
+    sleep 0.25
+  end
+  2.times do
+    play_chord [50, 62]
+    sleep 0.25
+    play 57
+    sleep 0.25
+    play_chord [54, 62]
+    sleep 0.25
+    play 57
+    sleep 0.25
+  end
+end
+
+
+define :glitch do
+  loop do
+    sleep 0.5
+    sample :glitch_perc1
+    sleep 0.5
+    sample :glitch_bass_g
+    sleep 1
+  end
+end
+
+
+define :treble do
+  use_synth :tri
+  sleep 0.25
+  play 67
+  sleep 0.125
+  play 66
+  sleep 0.125
+  play 67
+  sleep 0.25
+  play 71
+  sleep 0.125
+  play 72
+  sleep 0.125
+  play 71, attack: 0.125
+  sleep 1
+  
+  sleep 0.25
+  play 66
+  sleep 0.125
+  play 64
+  sleep 0.125
+  play 66
+  sleep 0.25
+  play 67
+  sleep 0.125
+  play 69
+  sleep 0.125
+  play 67, attack: 0.125
+  sleep 1
+  
+  sleep 0.25
+  play 66
+  sleep 0.125
+  play 64
+  sleep 0.125
+  play 66
+  sleep 0.25
+  play 71
+  sleep 0.125
+  play 72
+  sleep 0.125
+  play 71, attack: 0.125
+  sleep 1
+  
+  sleep 0.25
+  play 66
+  sleep 0.125
+  play 64
+  sleep 0.125
+  play 66, attack: 0.125
+  sleep 1.5
+  
+  
+  play 76, attack: 0.75, release: 0.25
+  sleep 0.75
+  play 71, attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play 74, attack: 0.75, release: 0.25
+  sleep 0.75
+  play 71, attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play 78, attack: 0.75, release: 0.25
+  sleep 0.75
+  play 71,attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play 78, attack: 0.75, release: 0.25
+  sleep 0.75
+  play 69, attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  
+  
+  play_chord [71,79], attack: 0.75, release: 0.25
+  sleep 0.75
+  play_chord [64,76], attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play_chord [71,79],attack: 0.75, release: 0.25
+  sleep 0.75
+  play_chord [67,74], attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play_chord [71,78], attack: 0.75, release: 0.25
+  sleep 0.75
+  play_chord [69,74] , attack: 0.5, release: 0.5
+  sleep 1.25
+  
+  play_chord [69,78] , attack: 0.75, release: 0.25
+  sleep 0.75
+  play_chord [62,69] , attack: 0.5, release: 0.5
+  sleep 1.25
+end
+
+
+
+define :sixteenths do
+  use_synth :tri
+  4.times do
+    play_pattern_timed [71,76,83], 0.125
+  end
+  
+  play_pattern_timed [71,76,72,76], 0.125
+  4.times do
+    play_pattern_timed [71,74,83], 0.125
+  end
+  play_pattern_timed [71,74,69,74], 0.125
+  
+  4.times do
+    play_pattern_timed [66,71,78], 0.125
+  end
+  play_pattern_timed [66,71,67,71], 0.125
+  
+  4.times do
+    play_pattern_timed [57,62,69], 0.125
+  end
+  play_pattern_timed [57,62,55,62], 0.125
+end
+
+
+
+do_da
+
+in_thread do
+  loop do
+    do_da
+  end
+end
+
+in_thread do
+  loop do
+    tss
+  end
+end
+
+in_thread do
+  boo_bop
+end
+
+in_thread do
+  loop do
+    glitch
+  end
+end
+
+in_thread do
+  1.times do
+    treble
+    2.times do
+      sixteenths
+    end
+  end
+  
+end
