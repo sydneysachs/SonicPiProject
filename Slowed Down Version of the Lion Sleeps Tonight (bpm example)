@@ -1,0 +1,31 @@
+use_bpm 120
+
+
+
+play :c
+sleep 1
+play :d
+sleep 1
+play :e
+sleep 1
+play :d
+sleep 1
+play :E
+sleep 1
+play :f
+sleep 1
+play :e
+sleep 1
+play :d
+sleep 1
+play :c
+sleep 1
+play :e
+sleep 1
+play :d
+sleep 1
+play :c
+sleep 1
+play :e
+sleep 1
+play :d
