@@ -1,0 +1,21 @@
+4.times do
+  sample :drum_heavy_kick
+  2.times do
+    sample :elec_bell, rate: 3
+    sleep 0.25
+  end
+  2.times do
+    sample :elec_bell, attack_level: 3
+    sleep 0.25
+  end
+  2.times do
+    sample :elec_bell, decay_level: 3
+    sleep 0.25
+  end
+  sample :ambi_piano
+  4.times do
+    sample :drum_bass_soft
+    sleep 0.125
+  end
+  
+end
